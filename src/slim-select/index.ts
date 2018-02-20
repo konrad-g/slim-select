@@ -89,8 +89,8 @@ class SlimSelect {
       this.render()
     }
 
-    // Add onclick listener to document to closeContent if clicked outside
-    document.addEventListener('click', (e: Event) => {
+    // Add onpointerup listener to document to closeContent if pointeruped outside
+    document.addEventListener('pointerup', (e: Event) => {
       if (!hasClassInTree(e.target, this.config.id)) {
         // console.log(hasClassInTree(e.target, this.config.id, !this.config.closeOnSelect))
         this.close()

@@ -87,7 +87,7 @@ export default class slim {
     deselect = document.createElement('span')
     deselect.innerHTML = 'X'
     deselect.classList.add('ss-deselect')
-    deselect.onclick = (e) => {
+    deselect.onpointerup = (e) => {
       this.main.set('')
       e.stopPropagation()
     }
@@ -101,8 +101,8 @@ export default class slim {
     arrowContainer.appendChild(arrowIcon)
     container.appendChild(arrowContainer)
 
-    // Add onclick for main selector div
-    container.onclick = () => {
+    // Add onpointerup for main selector div
+    container.onpointerup = () => {
       if (!this.main.config.isEnabled) { return }
 
       this.main.data.contentOpen ? this.main.close() : this.main.open()
@@ -165,7 +165,7 @@ export default class slim {
     add.classList.add(this.main.config.add)
     let plus = document.createElement('span')
     plus.classList.add(this.main.config.plus)
-    plus.onclick = (e) => {
+    plus.onpointerup = (e) => {
       if (this.main.data.contentOpen) {
         this.main.close()
         e.stopPropagation()
@@ -174,10 +174,10 @@ export default class slim {
     add.appendChild(plus)
     container.appendChild(add)
 
-    container.onclick = (e) => {
+    container.onpointerup = (e) => {
       if (!this.main.config.isEnabled) { return }
 
-      // Open only if you are not clicking on x text
+      // Open only if you are not pointeruping on x text
       let target = <Element>e.target
       if (!target.classList.contains(this.main.config.valueDelete)) {
         this.main.open()
@@ -260,7 +260,7 @@ export default class slim {
     let deleteSpan = document.createElement('span')
     deleteSpan.classList.add(this.main.config.valueDelete)
     deleteSpan.innerHTML = 'x'
-    deleteSpan.onclick = (e) => {
+    deleteSpan.onpointerup = (e) => {
       e.preventDefault()
       e.stopPropagation()
 
@@ -315,7 +315,7 @@ export default class slim {
     input.type = 'search'
     input.placeholder = 'Search'
     input.tabIndex = 0
-    input.onclick = (e) => {
+    input.onpointerup = (e) => {
       setTimeout(() => {
         let target = <HTMLInputElement>e.target
         if (target.value === '') { this.main.search('') }
@@ -368,7 +368,7 @@ export default class slim {
       var addable = document.createElement('div')
       addable.classList.add(this.main.config.addable)
       addable.innerHTML = '+'
-      addable.onclick = (e) => {
+      addable.onpointerup = (e) => {
         e.preventDefault()
         e.stopPropagation()
 
@@ -578,11 +578,11 @@ export default class slim {
       option.innerHTML = data.innerHTML
     }
     let master = this
-    option.onclick = function (e) {
+    option.onpointerup = function (e) {
       e.preventDefault()
       e.stopPropagation()
 
-      let element = this
+      let element: any = this
       let elementID = element.dataset.id
       if (master.main.beforeOnChange) {
         let value
@@ -606,7 +606,7 @@ export default class slim {
     }
 
     if (data.disabled || (selected && isValueInArrayOfObjects(selected, 'id', data.id))) {
-      option.onclick = null
+      option.onpointerup = null
       option.classList.add(this.main.config.disabled)
     }
 

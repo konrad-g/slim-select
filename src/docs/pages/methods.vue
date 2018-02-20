@@ -177,7 +177,7 @@ export default {
       </p>
 
       <div class="set-content">
-        <div class="btn" @click="getSelected">Get Selected</div>
+        <div class="btn" @pointerup="getSelected">Get Selected</div>
         <select id="selectedSingle">
           <option value="value1">Value 1</option>
           <option value="value2">Value 2</option>
@@ -212,7 +212,7 @@ export default {
       </p>
 
       <div class="set-content">
-        <div class="btn" @click="setValue">Set Value</div>
+        <div class="btn" @pointerup="setValue">Set Value</div>
         <select id="setSingle">
           <option value="value1">Value 1</option>
           <option value="value2">Value 2</option>
@@ -244,7 +244,7 @@ export default {
       </p>
 
       <div class="set-content">
-        <div class="btn" @click="setData">Set Data</div>
+        <div class="btn" @pointerup="setData">Set Data</div>
         <select id="setDataSingle"></select>
         <select id="setDataMultiple" multiple></select>
       </div>
@@ -288,7 +288,7 @@ export default {
       </p>
 
       <div class="set-content">
-        <div class="btn" @click="setSearch">Set Search</div>
+        <div class="btn" @pointerup="setSearch">Set Search</div>
         <select id="setSearchSingle">
           <option value="value1">Value 1</option>
           <option value="value2">Value 2</option>
@@ -319,8 +319,8 @@ export default {
       </p>
 
       <div class="set-content">
-        <div class="btn" @click="setEnable" v-if="setEnableSingle && !setEnableSingle.config.isEnabled">Enable</div>
-        <div class="btn" @click="setDisable" v-else>Disable</div>
+        <div class="btn" @pointerup="setEnable" v-if="setEnableSingle && !setEnableSingle.config.isEnabled">Enable</div>
+        <div class="btn" @pointerup="setDisable" v-else>Disable</div>
 
         <select id="setEnableSingle">
           <option value="value1">Value 1</option>
@@ -352,7 +352,7 @@ export default {
       </p>
 
       <div class="set-content">
-        <div class="btn" @click="setOpenClose">Open/Close</div>
+        <div class="btn" @pointerup="setOpenClose">Open/Close</div>
         <select id="setOpenCloseSingle">
           <option value="value1">Value 1</option>
           <option value="value2">Value 2</option>
@@ -389,8 +389,8 @@ export default {
       </p>
 
       <div class="set-content">
-        <div class="btn" @click="setCreate">Create</div>
-        <div class="btn" @click="setDestroy">Destroy</div>
+        <div class="btn" @pointerup="setCreate">Create</div>
+        <div class="btn" @pointerup="setDestroy">Destroy</div>
         <select id="setDestroySingle">
           <option value="value1">Value 1</option>
           <option value="value2">Value 2</option>

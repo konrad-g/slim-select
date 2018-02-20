@@ -247,8 +247,8 @@ var SlimSelect = /** @class */ (function () {
             // Do an initial render on startup
             this.render();
         }
-        // Add onclick listener to document to closeContent if clicked outside
-        document.addEventListener('click', function (e) {
+        // Add onpointerup listener to document to closeContent if pointeruped outside
+        document.addEventListener('pointerup', function (e) {
             if (!helper_1.hasClassInTree(e.target, _this.config.id)) {
                 // console.log(hasClassInTree(e.target, this.config.id, !this.config.closeOnSelect))
                 _this.close();
@@ -1163,7 +1163,7 @@ var slim = /** @class */ (function () {
         deselect = document.createElement('span');
         deselect.innerHTML = 'X';
         deselect.classList.add('ss-deselect');
-        deselect.onclick = function (e) {
+        deselect.onpointerup = function (e) {
             _this.main.set('');
             e.stopPropagation();
         };
@@ -1175,8 +1175,8 @@ var slim = /** @class */ (function () {
         arrowIcon.classList.add('arrow-down');
         arrowContainer.appendChild(arrowIcon);
         container.appendChild(arrowContainer);
-        // Add onclick for main selector div
-        container.onclick = function () {
+        // Add onpointerup for main selector div
+        container.onpointerup = function () {
             if (!_this.main.config.isEnabled) {
                 return;
             }
@@ -1235,7 +1235,7 @@ var slim = /** @class */ (function () {
         add.classList.add(this.main.config.add);
         var plus = document.createElement('span');
         plus.classList.add(this.main.config.plus);
-        plus.onclick = function (e) {
+        plus.onpointerup = function (e) {
             if (_this.main.data.contentOpen) {
                 _this.main.close();
                 e.stopPropagation();
@@ -1243,11 +1243,11 @@ var slim = /** @class */ (function () {
         };
         add.appendChild(plus);
         container.appendChild(add);
-        container.onclick = function (e) {
+        container.onpointerup = function (e) {
             if (!_this.main.config.isEnabled) {
                 return;
             }
-            // Open only if you are not clicking on x text
+            // Open only if you are not pointeruping on x text
             var target = e.target;
             if (!target.classList.contains(_this.main.config.valueDelete)) {
                 _this.main.open();
@@ -1325,7 +1325,7 @@ var slim = /** @class */ (function () {
         var deleteSpan = document.createElement('span');
         deleteSpan.classList.add(this.main.config.valueDelete);
         deleteSpan.innerHTML = 'x';
-        deleteSpan.onclick = function (e) {
+        deleteSpan.onpointerup = function (e) {
             e.preventDefault();
             e.stopPropagation();
             if (!_this.main.config.isEnabled) {
@@ -1375,7 +1375,7 @@ var slim = /** @class */ (function () {
         input.type = 'search';
         input.placeholder = 'Search';
         input.tabIndex = 0;
-        input.onclick = function (e) {
+        input.onpointerup = function (e) {
             setTimeout(function () {
                 var target = e.target;
                 if (target.value === '') {
@@ -1438,7 +1438,7 @@ var slim = /** @class */ (function () {
             var addable = document.createElement('div');
             addable.classList.add(this.main.config.addable);
             addable.innerHTML = '+';
-            addable.onclick = function (e) {
+            addable.onpointerup = function (e) {
                 e.preventDefault();
                 e.stopPropagation();
                 var inputValue = _this.search.input.value;
@@ -1636,7 +1636,7 @@ var slim = /** @class */ (function () {
             option.innerHTML = data.innerHTML;
         }
         var master = this;
-        option.onclick = function (e) {
+        option.onpointerup = function (e) {
             e.preventDefault();
             e.stopPropagation();
             var element = this;
@@ -1662,7 +1662,7 @@ var slim = /** @class */ (function () {
             }
         };
         if (data.disabled || (selected && helper_1.isValueInArrayOfObjects(selected, 'id', data.id))) {
-            option.onclick = null;
+            option.onpointerup = null;
             option.classList.add(this.main.config.disabled);
         }
         return option;

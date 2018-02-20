@@ -495,7 +495,7 @@
     <div class="content">
       <h2 class="header">beforeOnChange</h2>
       <p>
-        beforeOnChange will trigger a callback on an option click and will allow
+        beforeOnChange will trigger a callback on an option pointerup and will allow
         you the ability to halt if the value it produces isnt to your liking.
         In order to stop propagation just return false on the callback.
         Returning nothing or true will allow it to continue as normal.
